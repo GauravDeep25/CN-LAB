@@ -1,0 +1,9 @@
+# Ignore GCC compiler output files
+client
+server
+a.out
+*.o
+*.out
+*.obj
+*.exe
+core
