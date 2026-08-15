@@ -10,7 +10,6 @@
 
 int main(int argc, char const* argv[]) {
     int status, valread, client_fd;
-    int num;
     char num_str[20];
     struct sockaddr_in serv_addr;
     char buffer[1024] = {0};
@@ -22,18 +21,13 @@ int main(int argc, char const* argv[]) {
     serv_addr.sin_addr.s_addr = INADDR_ANY;
     serv_addr.sin_port = htons(PORT);
 
-
     printf("Connecting to server ......\n");
-
 
     status = connect(client_fd, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
 
-    // Read integer
+    // Read number as string
     printf("Enter a number: ");
-    scanf("%d", &num);
-
-    // Convert integer to string
-    sprintf(num_str, "%d", num);
+    scanf("%19s", num_str);
 
     // Send string to server
     send(client_fd, num_str, strlen(num_str), 0);
